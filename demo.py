@@ -1,14 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 #create an app
 app = Flask(__name__)
 
 #create a route for the flask app (homepage)
-@app.route('/', methods = ['GET'])
+@app.route('/', methods = ['GET', 'POST'])
 
 #create a home function
 def home():
-	return render_template('index.html')
+	if request.method == 'GET':
+		return render_template('index.html', message='Welcome to the Homepage')
+	else:
+		username = request.form['username']
+		password = request.form['password']
+
+		if username == 'user' and password == 'pass' :
+			return render_template('football.html', message = 'Login Successful')
+		else:
+			error_message = 'Hint: username is similar to user'
+			return render_template('index.html', message = error_message)
 
 #create a route for the flask app (football page)
 @app.route('/football', methods = ['GET'])
