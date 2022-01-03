@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import model
 
 #create an app
 app = Flask(__name__)
@@ -13,9 +14,12 @@ def home():
 	else:
 		username = request.form['username']
 		password = request.form['password']
+		db_password = model.check_pw(username)
 
-		if username == 'user' and password == 'pass' :
-			return render_template('football.html', message = 'Login Successful')
+		if password == db_password:
+			message = model.show_color(username)
+
+			return render_template('football.html', message = message)
 		else:
 			error_message = 'Hint: username is similar to user'
 			return render_template('index.html', message = error_message)
