@@ -31,6 +31,22 @@ def home():
 def football():
 	return render_template('football.html')
 
+#create a route for the flask app (signup page)
+@app.route('/signup', methods = ['GET', 'POST'])
+
+#create a signup function
+def signup():
+	if request.method == 'GET':
+		message = 'Signup Here!'
+		return render_template('signup.html', message = message)
+	else:
+		username = request.form["username"]
+		password = request.form["password"]
+		favourite_color = request.form["favourite_color"]
+
+		message = model.signup(username, password, favourite_color)
+		return render_template('signup.html', message = message)
+
 #run the app on a preferred port
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port = 7000, debug= True)
