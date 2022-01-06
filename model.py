@@ -1,5 +1,23 @@
 import sqlite3 
 
+#create a function for login session
+def check_users():
+	connection = sqlite3.connect('flask_tut.db', check_same_thread = False)
+	cursor = connection.cursor()
+
+	cursor.execute(""" SELECT username FROM users ORDER BY pk DESC;""")
+	db_users = cursor.fetchall()
+	users = []
+	#get all list of usernames
+	for i in range(len(db_users)):
+		person = db_users[i][0]
+		users.append(person)
+	connection.commit()
+	cursor.close()
+	connection.close()
+
+	return users
+
 def show_color(username):
 	connection = sqlite3.connect('flask_tut.db', check_same_thread = False)
 	cursor = connection.cursor()
@@ -52,4 +70,3 @@ def signup(username, password, favourite_color):
 		return ('User already signed up')
 
 	return 'You have successfully signed up!!!'
-
