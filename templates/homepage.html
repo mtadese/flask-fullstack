@@ -1,12 +1,12 @@
 {% extends "structure.html" %}
 
 {% block main %}
-	<h1>Welcome to the homepage </h1>
+	<h3>Homepage</h3>
 	<br>
-	<a href="/login">Login here!</a>
+	
 	<p>{{ message }}</p>
 
-	<br>
-	<br>
-	<a href="/signup">Sign Up here!</a>
+	<a class="btn btn-primary" href="/login">Login</a>
+			
+	<a class="btn btn-primary" href="/signup">SignUp</a>
 {% endblock main %}

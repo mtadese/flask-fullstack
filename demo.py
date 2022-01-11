@@ -18,7 +18,7 @@ def home():
 	if 'username' in session:
 	#declare the global variable (g) for flask
 		g.user =session['username']
-		return render_template('football.html', message = '<img src= static/img/coffee.jpg>')
+		return render_template('football.html', message = '<img src= static/img/coffee.jpg width="300" height="300">')
 	return render_template('homepage.html', message = 'Login to the page or Signup')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -35,20 +35,8 @@ def login():
 	return render_template('index.html')
 
 
-"""	if request.method == 'GET':
-		return render_template('index.html', message='Welcome to the Homepage')
-	else:
-		username = request.form['username']
-		password = request.form['password']
-		db_password = model.check_pw(username)
+"""
 
-		if password == db_password:
-			message = model.show_color(username)
-
-			return render_template('football.html', message = message)
-		else:
-			error_message = 'Hint: username is similar to user'
-			return render_template('index.html', message = error_message)
 """
 
 @app.before_request
@@ -60,12 +48,7 @@ def before_request():
 
 
 """
-#create a route for the flask app (football page)
-@app.route('/football', methods = ['GET'])
 
-#create a football function
-def football():
-	return render_template('football.html')
 """
 
 #create a route for the flask app (signup page)

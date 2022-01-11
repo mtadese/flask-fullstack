@@ -1,14 +1,32 @@
 {% extends "structure.html" %}
 
 {% block main %}
-	<h1>This is the Signup Page</h1>
-		<form action="/signup" method = "POST">
-			<input placeholder='Username' name="username" type="text">
-			<input placeholder='Password' name="password" type="password">
-			<input placeholder='Favourite Color' name="favourite_color" type="text">
+<h2>Signup Page</h2>
+<form action="/signup" method = "POST">
+
+    <div class="form-floating">
+      <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Username">
+	<label for="floatingInput">Username</label>
+    </div>
+
+    <div class="form-floating">
+      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+	<label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating">
+	<input name="favourite_color" type="text" class="form-control" id="floatingInput" placeholder="Favourite Color">
+	<label for="floatingInput">Favourite Color</label>
+    </div>
+
+	<button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+
 			
-			<input type="submit">
-		</form>
+</form>
 	
 	<p>{{ message }}</p>
+
+	<br>
+        <br>
+        <a href="/login">Login here!</a>
+
 {% endblock main %}
