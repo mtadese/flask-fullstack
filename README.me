@@ -50,4 +50,8 @@ $ sudo ln -s /etc/nginx/sites-available/flask-setting /etc/nginx/sites-enabled/f
 $ sudo nano etc/nginx/sites-enabled/flask-setting
 $ sudo systemctl restart nginx
 $ pip install flask gunicorn
-$ gunicorn --workers=2 hello:app
+$ gunicorn --workers=2 hello:app --daemon
+
+# Terminating a running gunicorn service
+$ sudo pkill -f gunicorn
+
